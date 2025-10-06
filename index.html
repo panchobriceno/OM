@@ -1,0 +1,861 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Plan Meta Ads — Instituto Cardiovascular Concepción</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1320;
+    --card: #111a2c;
+    --muted: #7f8dab;
+    --text: #e8eefc;
+    --accent: #5dd0ff;
+    --accent-2: #7af0b6;
+    --warn: #ffd166;
+    --danger: #ff6b6b;
+    --brand: #2b6cb0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    background: linear-gradient(180deg, #091425, #0e1630 40%, #0b1320);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .wrap {
+    max-width: 1100px;
+    padding: 32px 20px 80px;
+    margin: 0 auto;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .logo {
+    width: 72px;
+    aspect-ratio: 1/1;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(120% 120% at 0 0, #2b6cb020, #2b6cb000 60%), #0f1b33;
+    border: 1px solid #2b6cb055;
+  }
+
+  .logo svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hgroup h1 {
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: .2px;
+  }
+
+  .hgroup p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+  }
+
+  .chip {
+    background: #ffffff10;
+    color: var(--text);
+    border: 1px solid #ffffff18;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .chip svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  section {
+    margin: 32px 0;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+  }
+
+  .title .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .title h2 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: .3px;
+    font-weight: 700;
+  }
+
+  .grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .grid.cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid.cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card {
+    background: linear-gradient(180deg, #121c31, #0f182d 60%);
+    border: 1px solid #ffffff13;
+    border-radius: 18px;
+    padding: 20px;
+  }
+
+  .card h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+  }
+
+  .sub {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid #ffffff1a;
+    background: #ffffff0f;
+    font-size: 11px;
+    color: var(--text);
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .funnel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .intro-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      max-width: 800px;
+  }
+
+  .stage {
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid #ffffff15;
+  }
+
+  .stage.awareness {
+    background: linear-gradient(180deg, #153457, #10233c);
+  }
+
+  .stage.msg {
+    background: linear-gradient(180deg, #183a3a, #0f2727);
+  }
+
+  .stage.web {
+    background: linear-gradient(180deg, #2a2b41, #191a2c);
+  }
+  
+  .money {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 12px 0;
+  }
+
+  ul.clean {
+    list-style: none;
+    padding-left: 0;
+    margin: 10px 0 0;
+  }
+
+  ul.clean li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 8px 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .dot-ic {
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    flex-shrink: 0;
+  }
+
+  .footer {
+    margin-top: 48px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .badge {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    border: 1px solid #ffffff22;
+    display: inline-block;
+  }
+
+  .b-ok {
+    background: #00c89620;
+    border-color: #00c89655;
+    color: #7af0b6;
+  }
+
+  .b-warn {
+    background: #ffd16620;
+    border-color: #ffd16666;
+    color: #ffd166;
+  }
+
+  .b-info {
+    background: #5dd0ff20;
+    border-color: #5dd0ff55;
+    color: #5dd0ff;
+  }
+  
+  /* --- FUNCIONALIDADES --- */
+  
+  /* Tooltips */
+  .tooltip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 1px dotted var(--muted);
+    cursor: help;
+  }
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 220px;
+    background-color: #080f1a;
+    color: var(--text);
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -110px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    line-height: 1.5;
+    border: 1px solid #ffffff1a;
+  }
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Accordion (Desplegables) */
+  .accordion {
+    background-color: transparent;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.2s ease;
+    border-radius: 18px;
+    border: 1px solid #ffffff13;
+    background: linear-gradient(180deg, #121c31, #0f182d 60%);
+  }
+  
+  .accordion h3 {
+    color: #ffffff;
+    display: inline;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .accordion:hover {
+    background: linear-gradient(180deg, #1a2742, #151f38 60%);
+  }
+
+  .accordion.active {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+  }
+
+  .accordion:after {
+    content: '+';
+    font-size: 20px;
+    color: var(--accent);
+    float: right;
+    margin-left: 5px;
+    transition: transform 0.2s ease;
+  }
+
+  .accordion.active:after {
+    content: "−";
+    transform: rotate(180deg);
+  }
+
+  .panel {
+    padding: 0 18px;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    border: 1px solid #ffffff13;
+    border-top: none;
+  }
+  .panel .card-content {
+      padding: 20px 0;
+  }
+  
+  /* --- Gemini Feature Styles --- */
+  .gemini-feature {
+    margin-top: 20px;
+    border-top: 1px solid #ffffff1a;
+    padding-top: 20px;
+  }
+
+  .gemini-button {
+    background: linear-gradient(45deg, var(--accent), var(--accent-2));
+    color: var(--bg);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .gemini-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px #5dd0ff30;
+  }
+
+  .gemini-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+  }
+
+  .generated-script-container {
+    margin-top: 16px;
+    background: #0000003a;
+    border: 1px solid #ffffff14;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: #cfe4ff;
+  }
+
+  .loader {
+    border: 4px solid #f3f3f330;
+    border-radius: 50%;
+    border-top: 4px solid var(--accent);
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin-top: 16px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .grid.cols-3, .funnel {
+      grid-template-columns: 1fr;
+    }
+    header {
+        grid-template-columns: 56px 1fr;
+    }
+    .logo {
+        width: 56px;
+    }
+    .hgroup h1 {
+        font-size: 22px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .grid.cols-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo" title="ICV">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 2c4 0 8 1.5 8 6.5 0 6.4-5.6 10.1-8 11.9-2.4-1.8-8-5.5-8-11.9C4 3.5 8 2 12 2Z" fill="#2b6cb0" opacity=".35"/>
+          <path d="M6 9l3 3 2-2 2 2 5-5" stroke="#7af0b6"/>
+        </svg>
+      </div>
+      <div class="hgroup">
+        <h1>Plan Meta Ads — Instituto Cardiovascular Concepción</h1>
+        <p>Versión 1 • Octubre 2025 • Estructura de campañas & ideas creativas</p>
+      </div>
+    </header>
+
+    <!-- 1. Resumen Ejecutivo -->
+    <section>
+        <div class="title"><span class="dot"></span><h2>Resumen Ejecutivo</h2></div>
+        <div class="card">
+            <ul class="clean">
+                <li><span class="dot-ic"></span><div><b>Objetivo Principal:</b> Conseguir nuevos pacientes para el instituto a través de campañas en redes sociales.</div></li>
+                <li><span class="dot-ic"></span><div><b>Inversión Mensual:</b> $250.000 CLP.</div></li>
+                <li><span class="dot-ic"></span><div><b>Nuestra Estrategia:</b> Acompañaremos a los potenciales pacientes en 3 etapas (descubrimiento, consideración y decisión) para maximizar los resultados.</div></li>
+                <li><span class="dot-ic"></span><div><b>Entregables Clave:</b> Estrategia completa, 6-8 anuncios en video y un sistema claro de medición de resultados.</div></li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="chips">
+      <span class="chip" title="Objetivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>Objetivo: Captación de consultas</span>
+      <span class="chip"><span class="tooltip">KPI<span class="tooltip-text">Indicador Clave de Rendimiento. Es la métrica que usamos para medir el éxito de las campañas.</span></span>: Conversación WhatsApp & Costo por Reserva</span>
+      <span class="chip">Ticket promedio: $40.000 CLP</span>
+      <span class="chip">Geo: Gran Concepción (+ Biobío)</span>
+      <span class="chip">Presupuesto mensual: $250.000 CLP</span>
+      <span class="chip">
+        <span class="tooltip">Pixel<span class="tooltip-text">Es un código de Meta que se instala en la página web para medir las acciones de los usuarios y optimizar los anuncios.</span></span>: Sí · 
+        <span class="tooltip">CAPI<span class="tooltip-text">API de Conversiones. Es una forma más avanzada y precisa de enviar datos de la web a Meta, complementando al Pixel.</span></span>: No · 
+        <span class="tooltip">GTM<span class="tooltip-text">Google Tag Manager. Es una herramienta para gestionar las etiquetas de seguimiento (como el Pixel) en un sitio web.</span></span>: No</span>
+    </div>
+
+    <!-- 2. Funnel con Intro -->
+    <section>
+      <div class="title"><span class="dot"></span><h2>Estructura del plan (1 objetivo → 1 campaña)</h2></div>
+      <p class="intro-text">Nuestra estrategia se divide en tres etapas para acompañar a los potenciales pacientes. Primero, con la campaña de <b>Reconocimiento</b>, nos presentamos a un público amplio (Etapa 1). Luego, con las campañas de <b>Captación</b>, animamos a quienes mostraron interés a que nos contacten por WhatsApp o agenden una cita en la web (Etapas 2 y 3). Esta estructura optimiza el presupuesto y mejora los resultados.</p>
+      <div class="funnel">
+        <div class="stage awareness card">
+          <h3>C1 · Awareness</h3>
+          <div class="sub">Objetivo: Alcance</div>
+          <div class="row">
+            <span class="pill">Audiencias: <span class="tooltip">Público nuevo<span class="tooltip-text">Personas que aún no conocen o no han interactuado con el instituto.</span></span> (60–80%)</span>
+            <span class="pill">Frecuencia meta ≈ 2/7d</span>
+          </div>
+          <div class="money">$60.000 CLP</div>
+          <ul class="clean">
+            <li><span class="dot-ic"></span><div>2 grupos de anuncios: <b>Gran Concepción</b> (foco) + Biobío ligero.</div></li>
+            <li><span class="dot-ic"></span><div>Ubicaciones <span class="tooltip">Advantage+<span class="tooltip-text">Función de Meta que distribuye automáticamente los anuncios en las ubicaciones con mejor rendimiento (Feed, Stories, etc.).</span></span> · Creativos 9:16 y 1:1.</div></li>
+          </ul>
+        </div>
+        <div class="stage msg card">
+          <h3>C2 · Captación WhatsApp</h3>
+          <div class="sub">Objetivo: Mensajes (WhatsApp)</div>
+          <div class="row">
+            <span class="pill">Optimiza: Conversaciones iniciadas</span>
+            <span class="pill">Públicos: Nuevos + Interesados</span>
+          </div>
+          <div class="money">$120.000 CLP</div>
+          <ul class="clean">
+            <li><span class="dot-ic"></span><div>Público nuevo y amplio (25–65+).</div></li>
+            <li><span class="dot-ic"></span><div><span class="tooltip">Re-impacto<span class="tooltip-text">Anuncios dirigidos a personas que ya interactuaron con nuestras redes sociales o que iniciaron un chat.</span></span>: a quienes interactuaron con FB/IG.</div></li>
+            <li><span class="dot-ic"></span><div>Opción: horario de anuncios en atención activa.</div></li>
+          </ul>
+        </div>
+        <div class="stage web card">
+          <h3>C3 · Captación Web</h3>
+          <div class="sub">Objetivo: Conversiones (Website)</div>
+          <div class="row">
+            <span class="pill">Evento de optimización (V1): <b>Clic en "Agendar"</b></span>
+            <span class="pill">Públicos: Nuevos + Interesados</span>
+          </div>
+          <div class="money">$70.000 CLP</div>
+          <ul class="clean">
+            <li><span class="dot-ic"></span><div>Re-impacto: visitantes de la web y clic en botón.</div></li>
+            <li><span class="dot-ic"></span><div>Exclusión de futuras “reservas reales” cuando esté disponible.</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ideas Creativas -->
+    <section>
+      <div class="title"><span class="dot"></span><h2>Ideas creativas clave por campaña</h2></div>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Awareness · “Prevención = Tranquilidad”</h3>
+          <div class="row">
+            <span class="pill">Formato: Video 9:16 (15–20s)</span>
+            <span class="pill">Alt: Carrusel 1:1</span>
+          </div>
+          <ul class="clean">
+            <li><span class="dot-ic"></span><div><b>Hook:</b> “A los 50, tu corazón te pide control.”</div></li>
+            <li><span class="dot-ic"></span><div><b>Ángulo:</b> prevención, autoridad clínica, calma.</div></li>
+            <li><span class="dot-ic"></span><div><b>CTA suave:</b> “Conoce a nuestro equipo”.</div></li>
+          </ul>
+          <div class="row"><span class="badge b-info">Tono: autoridad serena</span></div>
+        </div>
+        <div class="card">
+          <h3>Mensajes · “Resuelve tus dudas en minutos”</h3>
+          <div class="row">
+            <span class="pill">Formato: Video 9:16</span>
+            <span class="pill">Alt: Imagen 1:1</span>
+          </div>
+          <ul class="clean">
+            <li><span class="dot-ic"></span><div><b>Hook:</b> “¿Dudas de cardiología? Escríbenos ahora.”</div></li>
+            <li><span class="dot-ic"></span><div><b>Cuerpo:</b> 2 preguntas frecuentes + ruta para agendar por chat.</div></li>
+            <li><span class="dot-ic"></span><div><b>CTA:</b> “Enviar WhatsApp”. Mensaje de bienvenida listo en inbox.</div></li>
+          </ul>
+          <div class="row"><span class="badge b-ok">Resultado nativo: Conversaciones iniciadas</span></div>
+        </div>
+        <div class="card">
+          <h3>Web · “Agendar es simple”</h3>
+          <div class="row">
+            <span class="pill">Formato: Video 9:16 / 1:1</span>
+            <span class="pill">Alt: Carrusel 1:1</span>
+          </div>
+          <ul class="clean">
+            <li><span class="dot-ic"></span><div><b>Demo:</b> screenflow hasta el botón <i>“Agendar servicio”</i>.</div></li>
+            <li><span class="dot-ic"></span><div><b>Beneficios:</b> evaluación completa, plan claro, tranquilidad.</div></li>
+            <li><span class="dot-ic"></span><div><b>CTA:</b> “Agenda tu consulta hoy”.</div></li>
+          </ul>
+          <div class="row"><span class="badge b-info">Optimiza a evento: <b>Schedule (clic botón)</b></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Medición Simplificada -->
+    <section>
+      <div class="title"><span class="dot"></span><h2>¿Cómo mediremos los resultados?</h2></div>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Medición desde el Día 1</h3>
+          <ul class="clean">
+            <li><span class="dot-ic"></span><div>Mediremos la cantidad de personas que hacen clic en el botón “Agendar servicio” en la web.</div></li>
+            <li><span class="dot-ic"></span><div>Contaremos el número de conversaciones que se inician a través de WhatsApp.</div></li>
+            <li><span class="dot-ic"></span><div>Usaremos enlaces con seguimiento para diferenciar de dónde viene cada reserva (anuncios de WhatsApp vs. anuncios de la web).</div></li>
+          </ul>
+          <div class="row">
+            <span class="badge b-ok"><span class="tooltip">Pixel<span class="tooltip-text">Es un código de Meta que se instala en la página web para medir las acciones de los usuarios y optimizar los anuncios.</span></span>: activo</span>
+            <span class="badge b-warn">Agendador externo (<span class="tooltip">iFrame<span class="tooltip-text">Un iFrame es un componente que inserta contenido de otra página web dentro de la página actual. A veces limita la medición.</span></span>)</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Propuesta de Mejora Futura</h3>
+          <ul class="clean">
+            <li><span class="dot-ic"></span><div>Para tener datos aún más precisos, recomendamos en una segunda fase integrar nuestro sistema con AgendaPro.</div></li>
+            <li><span class="dot-ic"></span><div>Esto nos permitirá medir no solo los clics, sino las <b>reservas completadas</b>, optimizando aún mejor el presupuesto.</div></li>
+            <li><span class="dot-ic"></span><div>Se realizaría a través de la <span class="tooltip">API de Conversiones<span class="tooltip-text">API de Conversiones. Es una forma más avanzada y precisa de enviar datos de la web a Meta, complementando al Pixel.</span></span> para máxima precisión.</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Guiones Desplegables con Gemini -->
+    <section>
+      <div class="title"><span class="dot"></span><h2>Guiones y Propuestas de Anuncios (v1)</h2></div>
+      <p class="intro-text">A continuación, detallamos las ideas para los primeros anuncios en video. Haz clic en cada título para ver el guion y usa el botón ✨ para generar nuevas ideas.</p>
+      
+      <div class="accordion-container">
+          <button class="accordion"><h3>Awareness A1 · “Bienvenidos a ICV Concepción” (Doctor)</h3></button>
+          <div class="panel">
+              <div class="card-content">
+                  <div class="sub">Objetivo: anunciar apertura / presencia y presentar propuesta de valor</div>
+                  <ul class="clean">
+                    <li><span class="dot-ic"></span><div><b>Duración:</b> 18–22s · Formato 9:16</div></li>
+                    <li><span class="dot-ic"></span><div><b>Voz del Doctor (guion sugerido):</b> “Hola, soy el Dr. [Nombre]. En Concepción ya cuentas con el <b>Instituto Cardiovascular</b>, un centro especializado en salud del corazón. Tenemos <b>[XX] especialidades</b> y <b>[XX] exámenes</b> para un diagnóstico claro y un plan sencillo. Te invito a conocernos; estaré esperándote aquí.”</div></li>
+                    <li><span class="dot-ic"></span><div><b>Texto en pantalla:</b> Logo ICV · “Especialistas en salud cardiovascular” · “Gran Concepción”</div></li>
+                    <li><span class="dot-ic"></span><div><b>Propuesta de escenas:</b> 1) Una toma del doctor en su consulta; 2) Vistas de la fachada/recepción; 3) Primer plano de equipamiento; 4) Doctor mirando a cámara para invitar.</div></li>
+                    <li><span class="dot-ic"></span><div><b>Llamada a la acción:</b> “Conoce más / Agenda tu consulta”</div></li>
+                  </ul>
+                  <div class="row"><span class="badge b-info">Tono: autoridad serena • Evitar alarmismo o promesas absolutas</span></div>
+                  <div class="gemini-feature">
+                      <button class="gemini-button">✨ Generar otra versión del guion</button>
+                      <div class="loader" style="display: none;"></div>
+                      <div class="generated-script-container"></div>
+                  </div>
+              </div>
+          </div>
+          <button class="accordion" style="margin-top:14px;"><h3>Awareness A2 · “Tu equipo en Concepción” (Equipo)</h3></button>
+          <div class="panel">
+              <div class="card-content">
+                  <div class="sub">Objetivo: reforzar confianza, equipo y cercanía</div>
+                  <ul class="clean">
+                      <li><span class="dot-ic"></span><div><b>Duración:</b> 20–25s · Formato 9:16</div></li>
+                      <li><span class="dot-ic"></span><div><b>Voces del equipo (guion sugerido):</b> Dr. 1: “Abrimos en Concepción para cuidarte mejor.” · Dr. 2: “Somos especialistas en [área 1 / 2].” · Dr. 3: “Contamos con [XX] exámenes para estudiar tu corazón.” · Gerente: “Te esperamos en el Instituto Cardiovascular. Agenda en línea o por WhatsApp.”</div></li>
+                      <li><span class="dot-ic"></span><div><b>Texto en pantalla:</b> “Especialidad + Nombre” para cada doctor · Dirección/sector</div></li>
+                      <li><span class="dot-ic"></span><div><b>Propuesta de escenas:</b> 1) Tomas dinámicas de cada doctor; 2) Toma del equipo completo sonriendo; 3) Cierre con la fachada del instituto.</div></li>
+                      <li><span class="dot-ic"></span><div><b>Llamada a la acción:</b> “Conócenos / Agenda hoy”</div></li>
+                  </ul>
+                  <div class="row"><span class="badge b-ok">Ideal para campaña de Alcance</span></div>
+                  <div class="gemini-feature">
+                      <button class="gemini-button">✨ Generar otra versión del guion</button>
+                      <div class="loader" style="display: none;"></div>
+                      <div class="generated-script-container"></div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- NUEVOS GUIONES AÑADIDOS -->
+          <button class="accordion" style="margin-top:14px;"><h3>Captación E1 · “Diagnóstico por Imagen – TAC y AngioTAC”</h3></button>
+          <div class="panel">
+              <div class="card-content">
+                  <div class="sub">Objetivo: Educar sobre la utilidad de exámenes específicos y facilitar la reserva.</div>
+                  <ul class="clean">
+                    <li><span class="dot-ic"></span><div><b>Duración:</b> 18–22s · Formato 9:16</div></li>
+                    <li><span class="dot-ic"></span><div><b>Voz del Doctor (guion sugerido):</b> “El TAC y el AngioTAC nos permiten estudiar tu corazón y arterias con imágenes de alta definición. Es un examen clave para obtener diagnósticos precisos. En nuestro instituto, te acompañamos en cada paso del proceso.”</div></li>
+                    <li><span class="dot-ic"></span><div><b>Texto en pantalla:</b> “TAC / AngioTAC — coordinación rápida” · “Equipo especializado”</div></li>
+                    <li><span class="dot-ic"></span><div><b>Propuesta de escenas:</b> 1) Equipo TAC funcionando; 2) Paciente simulado siendo preparado, con calma; 3) Vista de la consola técnica; 4) Cierre con llamada a la acción.</div></li>
+                    <li><span class="dot-ic"></span><div><b>Llamada a la acción:</b> “Consulta disponibilidad” (WhatsApp / Web)</div></li>
+                  </ul>
+                  <div class="row"><span class="badge b-info">Tono: Educativo y tranquilizador</span></div>
+                  <div class="gemini-feature">
+                      <button class="gemini-button">✨ Generar otra versión del guion</button>
+                      <div class="loader" style="display: none;"></div>
+                      <div class="generated-script-container"></div>
+                  </div>
+              </div>
+          </div>
+
+          <button class="accordion" style="margin-top:14px;"><h3>Captación E2 · “Ecocardiogramas – ¿Cómo funciona tu corazón?”</h3></button>
+          <div class="panel">
+              <div class="card-content">
+                  <div class="sub">Objetivo: Mostrar la tecnología disponible y sus beneficios para el paciente.</div>
+                  <ul class="clean">
+                      <li><span class="dot-ic"></span><div><b>Duración:</b> 20–25s · Formato 9:16</div></li>
+                      <li><span class="dot-ic"></span><div><b>Voz del Doctor (guion sugerido):</b> “El ecocardiograma nos muestra cómo late tu corazón en tiempo real. Dependiendo del caso, lo realizamos en reposo o bajo estrés para obtener respuestas claras que nos ayuden a definir tu plan de cuidado.”</div></li>
+                      <li><span class="dot-ic"></span><div><b>Texto en pantalla:</b> “Ecocardiograma Transtorácico · Ecoestrés” · “Equipo y protocolos clínicos”</div></li>
+                      <li><span class="dot-ic"></span><div><b>Propuesta de escenas:</b> 1) Transductor sobre el pecho; 2) Monitor mostrando la ecografía; 3) Paciente en bicicleta estática; 4) Doctor explicando los resultados al paciente.</div></li>
+                      <li><span class="dot-ic"></span><div><b>Llamada a la acción:</b> “Agenda tu eco”</div></li>
+                  </ul>
+                  <div class="row"><span class="badge b-info">Tono: Cercano y tecnológico</span></div>
+                  <div class="gemini-feature">
+                      <button class="gemini-button">✨ Generar otra versión del guion</button>
+                      <div class="loader" style="display: none;"></div>
+                      <div class="generated-script-container"></div>
+                  </div>
+              </div>
+          </div>
+
+          <button class="accordion" style="margin-top:14px;"><h3>Captación E3 · “Pruebas de Esfuerzo – Mide tu rendimiento”</h3></button>
+          <div class="panel">
+              <div class="card-content">
+                  <div class="sub">Objetivo: Explicar para qué sirven las pruebas funcionales.</div>
+                  <ul class="clean">
+                      <li><span class="dot-ic"></span><div><b>Duración:</b> 18–22s · Formato 9:16</div></li>
+                      <li><span class="dot-ic"></span><div><b>Voz del Doctor (guion sugerido):</b> “El test de esfuerzo mide cómo responde tu corazón ante la actividad física. Es fundamental para evaluar tu capacidad aeróbica y estudiar síntomas como mareos o fatiga. Tu seguridad es siempre nuestra prioridad.”</div></li>
+                      <li><span class="dot-ic"></span><div><b>Texto en pantalla:</b> “Seguridad y Supervisión Médica” · “Informe claro y detallado”</div></li>
+                      <li><span class="dot-ic"></span><div><b>Propuesta de escenas:</b> 1) Colocación de electrodos; 2) Paciente en la cinta de correr; 3) Médico supervisando monitores; 4) Cierre con llamada a la acción.</div></li>
+                      <li><span class="dot-ic"></span><div><b>Llamada a la acción:</b> “Reserva tu evaluación”</div></li>
+                  </ul>
+                   <div class="row"><span class="badge b-info">Tono: Profesional y seguro</span></div>
+                  <div class="gemini-feature">
+                      <button class="gemini-button">✨ Generar otra versión del guion</button>
+                      <div class="loader" style="display: none;"></div>
+                      <div class="generated-script-container"></div>
+                  </div>
+              </div>
+          </div>
+
+          <button class="accordion" style="margin-top:14px;"><h3>Captación E4 · “Monitoreo 24h – Holter y MAPA”</h3></button>
+          <div class="panel">
+              <div class="card-content">
+                  <div class="sub">Objetivo: Desmitificar los exámenes de monitoreo y hacerlos ver sencillos.</div>
+                  <ul class="clean">
+                      <li><span class="dot-ic"></span><div><b>Duración:</b> 18–22s · Formato 9:16</div></li>
+                      <li><span class="dot-ic"></span><div><b>Voz del Doctor (guion sugerido):</b> “Para entender mejor tus síntomas, a veces necesitamos monitorear tu ritmo cardíaco o presión durante 24 horas con un Holter o MAPA. Es un procedimiento sencillo que nos da información muy valiosa para tomar decisiones sobre tu salud.”</div></li>
+                      <li><span class="dot-ic"></span><div><b>Texto en pantalla:</b> “Holter de Ritmo · MAPA de Presión · ECG”</div></li>
+                      <li><span class="dot-ic"></span><div><b>Propuesta de escenas:</b> 1) Colocación de un Holter a un paciente; 2) Paciente en su vida diaria con el dispositivo; 3) Entrega de indicaciones claras por parte del personal.</div></li>
+                      <li><span class="dot-ic"></span><div><b>Llamada a la acción:</b> “Agenda tu examen”</div></li>
+                  </ul>
+                   <div class="row"><span class="badge b-info">Tono: Simple y tranquilizador</span></div>
+                  <div class="gemini-feature">
+                      <button class="gemini-button">✨ Generar otra versión del guion</button>
+                      <div class="loader" style="display: none;"></div>
+                      <div class="generated-script-container"></div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+    </section>
+
+    <div class="footer">© Octopus Media — Infografía para cliente. Este archivo resume estructura de campañas, ideas creativas y esquema de medición acordado.</div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Script para Acordeón ---
+    const acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+    // --- Gemini API Feature: Script Variation Generator ---
+    const generateButtons = document.querySelectorAll('.gemini-button');
+
+    generateButtons.forEach(button => {
+        button.addEventListener('click', generateScriptVariation);
+    });
+
+    async function generateScriptVariation(event) {
+        const button = event.target.closest('.gemini-button');
+        const featureContainer = button.closest('.gemini-feature');
+        const loader = featureContainer.querySelector('.loader');
+        const resultContainer = featureContainer.querySelector('.generated-script-container');
+        const panel = button.closest('.panel');
+        
+        // Find the original script text based on its surrounding text
+        const listItems = panel.querySelectorAll('ul.clean li div');
+        let originalScript = '';
+        listItems.forEach(item => {
+            if (item.textContent.includes('(guion sugerido):')) {
+                originalScript = item.textContent;
+            }
+        });
+
+        if (!originalScript) {
+            resultContainer.textContent = 'Error: No se pudo encontrar el guion original.';
+            return;
+        }
+
+        // Show loader and disable button
+        loader.style.display = 'block';
+        button.disabled = true;
+        resultContainer.innerHTML = '';
+
+        const systemPrompt = "Actúa como un copywriter experto en marketing para el sector salud en Chile. Genera una variación concisa y atractiva de este guion para un video publicitario de 15 a 25 segundos para redes sociales (Instagram Reels, TikTok). Mantén el tono de autoridad serena y el objetivo original. La respuesta debe ser solo el nuevo guion, sin introducciones ni despedidas.";
+        const userQuery = `Aquí está el guion base para generar una variación: ${originalScript}`;
+        
+        const apiKey = ""; // API key is handled by the environment
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        // Using exponential backoff for retries
+        let response;
+        let retries = 3;
+        let delay = 1000;
+        while(retries > 0) {
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+
+                response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    break; // Success
+                }
+
+            } catch(error) {
+                console.error('Fetch error:', error);
+            }
+            retries--;
+            if (retries > 0) {
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2;
+            }
+        }
+
+        try {
+            if (!response || !response.ok) {
+                throw new Error(`Error en la API después de varios intentos. Estado: ${response ? response.status : 'desconocido'}`);
+            }
+
+            const result = await response.json();
+            const candidate = result.candidates?.[0];
+
+            if (candidate && candidate.content?.parts?.[0]?.text) {
+                const newScript = candidate.content.parts[0].text;
+                resultContainer.textContent = newScript;
+            } else {
+                resultContainer.textContent = 'No se pudo generar una variación. La respuesta de la IA estaba vacía.';
+                console.error('Respuesta inesperada de la API:', result);
+            }
+
+        } catch (error) {
+            console.error('Error al llamar a la API de Gemini:', error);
+            resultContainer.textContent = 'Hubo un problema al conectar con el servicio de IA. Por favor, inténtalo más tarde.';
+        } finally {
+            loader.style.display = 'none';
+            button.disabled = false;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>
+
+

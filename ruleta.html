@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<title>Ruleta de Pacientes</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f1a;
+    color: #fff;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .slot-container {
+    width: 100%;
+    max-width: 340px;
+    height: 120px;
+    border-radius: 20px;
+    border: 2px solid #333;
+    background: #1a1a2e;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 32px;
+  }
+
+  .slot-container::before,
+  .slot-container::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 30px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .slot-container::before {
+    top: 0;
+    background: linear-gradient(to bottom, #1a1a2e, transparent);
+  }
+
+  .slot-container::after {
+    bottom: 0;
+    background: linear-gradient(to top, #1a1a2e, transparent);
+  }
+
+  .slot-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.1s linear;
+    will-change: transform;
+  }
+
+  .slot-item {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    flex-shrink: 0;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .slot-label {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 340px;
+    padding: 18px;
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .btn-spin {
+    background: linear-gradient(135deg, #6c5ce7, #a855f7);
+    color: #fff;
+    box-shadow: 0 4px 20px #6c5ce740;
+  }
+
+  .btn-spin:active {
+    transform: scale(0.97);
+  }
+
+  .btn-spin:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .result-card {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 20px;
+    padding: 24px;
+    margin-top: 24px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .result-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .result-card.hide {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    max-height: 0;
+    padding: 0 24px;
+    margin-top: 0;
+  }
+
+  .result-card .profile-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .result-card .profile-name span {
+    font-size: 28px;
+  }
+
+  .result-card .profile-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .profile-a { background: linear-gradient(135deg, #e74c3c22, #e74c3c11); border: 1px solid #e74c3c44; }
+  .profile-b { background: linear-gradient(135deg, #f39c1222, #f39c1211); border: 1px solid #f39c1244; }
+  .profile-c { background: linear-gradient(135deg, #3498db22, #3498db11); border: 1px solid #3498db44; }
+  .profile-d { background: linear-gradient(135deg, #2ecc7122, #2ecc7111); border: 1px solid #2ecc7144; }
+
+  .profile-a .profile-name { color: #e74c3c; }
+  .profile-b .profile-name { color: #f39c12; }
+  .profile-c .profile-name { color: #3498db; }
+  .profile-d .profile-name { color: #2ecc71; }
+
+  .confetti-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    animation: confetti-fall 1.5s ease-out forwards;
+  }
+
+  @keyframes confetti-fall {
+    0% { transform: translateY(-10px) rotate(0deg) scale(1); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg) scale(0.3); opacity: 0; }
+  }
+
+  .instruction {
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Fotografia Dental Infantil</h1>
+<p class=\"subtitle\">Clase de Odontopediatria</p>
+
+<div class=\"slot-container\" id=\"slotContainer\">
+  <div class=\"slot-track\" id=\"slotTrack\"></div>
+</div>
+
+<button class=\"btn btn-spin\" id=\"spinBtn\" onclick=\"spin()\">Girar la Ruleta</button>
+
+<div class=\"result-card hide\" id=\"resultCard\">
+  <div class=\"profile-name\" id=\"resultName\"></div>
+  <div class=\"profile-desc\" id=\"resultDesc\"></div>
+</div>
+
+<p class=\"instruction\">Practica con el perfil que te toque</p>
+
+<div class=\"confetti-container\" id=\"confettiContainer\"></div>
+
+<script>
+var profiles = [
+  {
+    id: 'a',
+    emoji: '🙊',
+    label: 'Perfil A',
+    name: 'La que no quiere abrir la boca',
+    desc: '"La semana pasada me tocó una niñita de 5 años que estuvo 10 minutos con la boca cerrada. Tuve que negociar como con un sindicato."',
+    class: 'profile-a'
+  },
+  {
+    id: 'b',
+    emoji: '⏱️',
+    label: 'Perfil B',
+    name: 'La que se cansa rápido',
+    desc: '"Esta es típica: empieza bien, abre, te deja todo. Pero al minuto 3 ya no aguanta. Hay que ser rápida."',
+    class: 'profile-b'
+  },
+  {
+    id: 'c',
+    emoji: '🤔',
+    label: 'Perfil C',
+    name: 'La que pregunta todo',
+    desc: '"¿Y eso qué es?" "¿Por qué me pones eso?" "¿Para qué?" Adorables, pero te complican el tiro."',
+    class: 'profile-c'
+  },
+  {
+    id: 'd',
+    emoji: '🪞',
+    label: 'Perfil D',
+    name: 'La del espejo incómodo',
+    desc: '"Tienen arcadas, se quejan del frío del metal. El espejo se empaña a los 5 segundos."',
+    class: 'profile-d'
+  }
+];
+
+var slotTrack = document.getElementById('slotTrack');
+var spinBtn = document.getElementById('spinBtn');
+var resultCard = document.getElementById('resultCard');
+var resultName = document.getElementById('resultName');
+var resultDesc = document.getElementById('resultDesc');
+
+function buildSlotItems(count) {
+  slotTrack.innerHTML = '';
+  var items = [];
+  for (var i = 0; i < count; i++) {
+    var p = profiles[i % 4];
+    var div = document.createElement('div');
+    div.className = 'slot-item';
+    div.innerHTML = '<span style=\"font-size:48px\">' + p.emoji + '</span><span class=\"slot-label\">' + p.label + '</span>';
+    slotTrack.appendChild(div);
+    items.push(div);
+  }
+  return items;
+}
+
+buildSlotItems(4);
+
+var spinning = false;
+
+function spin() {
+  if (spinning) return;
+  spinning = true;
+  spinBtn.disabled = true;
+
+  resultCard.classList.remove('show');
+  resultCard.classList.add('hide');
+  resultCard.className = 'result-card hide';
+
+  var winnerIndex = Math.floor(Math.random() * 4);
+  var totalSpins = 6;
+  var totalItems = totalSpins * 4 + winnerIndex;
+  var itemHeight = 120;
+
+  buildSlotItems(totalItems + 4);
+
+  var current = 0;
+  var target = totalItems;
+  var speed = 30;
+  var position = 0;
+
+  function animate() {
+    if (current >= target) {
+      spinning = false;
+      spinBtn.disabled = false;
+      showResult(winnerIndex);
+      return;
+    }
+
+    current++;
+    position = current * itemHeight;
+    slotTrack.style.transform = 'translateY(-' + position + 'px)';
+
+    var progress = current / target;
+    if (progress < 0.5) {
+      speed = 30 + progress * 20;
+    } else if (progress < 0.8) {
+      speed = 40 + (progress - 0.5) * 200;
+    } else {
+      speed = 100 + (progress - 0.8) * 600;
+    }
+
+    setTimeout(animate, speed);
+  }
+
+  slotTrack.style.transition = 'none';
+  slotTrack.style.transform = 'translateY(0)';
+
+  requestAnimationFrame(function() {
+    animate();
+  });
+}
+
+function showResult(index) {
+  var profile = profiles[index];
+
+  resultCard.className = 'result-card ' + profile.class;
+  resultName.innerHTML = '<span>' + profile.emoji + '</span> ' + profile.name;
+  resultDesc.textContent = profile.desc;
+
+  requestAnimationFrame(function() {
+    resultCard.classList.add('show');
+  });
+
+  launchConfetti();
+}
+
+function launchConfetti() {
+  var container = document.getElementById('confettiContainer');
+  container.innerHTML = '';
+  var colors = ['#e74c3c', '#f39c12', '#3498db', '#2ecc71', '#9b59b6', '#e91e63', '#00bcd4'];
+
+  for (var i = 0; i < 40; i++) {
+    var confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * 100 + '%';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+    confetti.style.animationDuration = (1 + Math.random()) + 's';
+    confetti.style.width = (6 + Math.random() * 8) + 'px';
+    confetti.style.height = (6 + Math.random() * 8) + 'px';
+    container.appendChild(confetti);
+  }
+
+  setTimeout(function() { container.innerHTML = ''; }, 2500);
+}
+</script>
+</body>
+</html>
